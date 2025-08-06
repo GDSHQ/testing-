@@ -1,0 +1,351 @@
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .designer-section {
+            padding: 2rem 0;
+        }
+
+        .designer-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: start;
+        }
+
+        .upload-panel, .preview-panel {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .panel-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+            color: #333;
+            text-align: center;
+        }
+
+        .upload-area {
+            border: 3px dashed #667eea;
+            border-radius: 15px;
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            background: rgba(102, 126, 234, 0.05);
+        }
+
+        .upload-area:hover {
+            border-color: #764ba2;
+            background: rgba(118, 75, 162, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .upload-area.dragover {
+            border-color: #764ba2;
+            background: rgba(118, 75, 162, 0.15);
+            transform: scale(1.02);
+        }
+
+        .upload-content {
+            pointer-events: none;
+        }
+
+        .upload-icon {
+            width: 4rem;
+            height: 4rem;
+            margin-bottom: 1rem;
+            color: #667eea;
+        }
+
+        .upload-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .upload-subtext {
+            color: #666;
+        }
+
+        .file-input {
+            display: none;
+        }
+
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .control-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .control-label {
+            font-weight: 600;
+            color: #333;
+            font-size: 0.9rem;
+        }
+
+        .control-select, .control-range {
+            padding: 0.75rem;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            background: white;
+            transition: border-color 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .control-select:focus, .control-range:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .control-range {
+            -webkit-appearance: none;
+            height: 8px;
+            background: #e1e5e9;
+            border: none;
+            border-radius: 4px;
+        }
+
+        .control-range::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            width: 20px;
+            height: 20px;
+            background: #667eea;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .size-value {
+            font-weight: 600;
+            color: #667eea;
+            text-align: center;
+            margin-top: 0.5rem;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .btn {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-secondary {
+            background: #f8f9fa;
+            color: #666;
+            border: 2px solid #e1e5e9;
+        }
+
+        .btn-secondary:hover {
+            background: #e9ecef;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: 2px solid transparent;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(102, 126, 234, 0.4);
+        }
+
+        .tshirt-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 400px;
+            margin-bottom: 2rem;
+        }
+
+        .tshirt {
+            width: 320px;
+            height: 380px;
+            position: relative;
+            transition: all 0.3s ease;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .tshirt-front {
+            width: 100%;
+            height: 100%;
+            position: relative;
+            transition: all 0.3s ease;
+            background-size: contain;
+            background-repeat: no-repeat;
+            background-position: center;
+            filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.15));
+        }
+
+        .tshirt.white .tshirt-front { 
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><mask id="neckCutout"><rect width="400" height="500" fill="white"/><ellipse cx="200" cy="45" rx="45" ry="25" fill="black"/></mask></defs><path d="M50 50 Q 50 30 70 30 L 130 30 Q 140 25 150 25 L 250 25 Q 260 25 270 30 L 330 30 Q 350 30 350 50 L 370 60 Q 380 70 380 90 L 380 120 Q 380 140 370 140 L 370 450 Q 370 480 340 480 L 60 480 Q 30 480 30 450 L 30 140 Q 20 140 20 120 L 20 90 Q 20 70 30 60 Z" fill="%23ffffff" stroke="%23e0e0e0" stroke-width="2" mask="url(%23neckCutout)"/></svg>');
+        }
+        
+        .tshirt.black .tshirt-front { 
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><mask id="neckCutout"><rect width="400" height="500" fill="white"/><ellipse cx="200" cy="45" rx="45" ry="25" fill="black"/></mask></defs><path d="M50 50 Q 50 30 70 30 L 130 30 Q 140 25 150 25 L 250 25 Q 260 25 270 30 L 330 30 Q 350 30 350 50 L 370 60 Q 380 70 380 90 L 380 120 Q 380 140 370 140 L 370 450 Q 370 480 340 480 L 60 480 Q 30 480 30 450 L 30 140 Q 20 140 20 120 L 20 90 Q 20 70 30 60 Z" fill="%23333333" stroke="%23222222" stroke-width="2" mask="url(%23neckCutout)"/></svg>');
+        }
+
+        .tshirt.navy .tshirt-front { 
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><mask id="neckCutout"><rect width="400" height="500" fill="white"/><ellipse cx="200" cy="45" rx="45" ry="25" fill="black"/></mask></defs><path d="M50 50 Q 50 30 70 30 L 130 30 Q 140 25 150 25 L 250 25 Q 260 25 270 30 L 330 30 Q 350 30 350 50 L 370 60 Q 380 70 380 90 L 380 120 Q 380 140 370 140 L 370 450 Q 370 480 340 480 L 60 480 Q 30 480 30 450 L 30 140 Q 20 140 20 120 L 20 90 Q 20 70 30 60 Z" fill="%232c3e50" stroke="%23243342" stroke-width="2" mask="url(%23neckCutout)"/></svg>');
+        }
+
+        .tshirt.red .tshirt-front { 
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><mask id="neckCutout"><rect width="400" height="500" fill="white"/><ellipse cx="200" cy="45" rx="45" ry="25" fill="black"/></mask></defs><path d="M50 50 Q 50 30 70 30 L 130 30 Q 140 25 150 25 L 250 25 Q 260 25 270 30 L 330 30 Q 350 30 350 50 L 370 60 Q 380 70 380 90 L 380 120 Q 380 140 370 140 L 370 450 Q 370 480 340 480 L 60 480 Q 30 480 30 450 L 30 140 Q 20 140 20 120 L 20 90 Q 20 70 30 60 Z" fill="%23e74c3c" stroke="%23d73527" stroke-width="2" mask="url(%23neckCutout)"/></svg>');
+        }
+
+        .tshirt.gray .tshirt-front { 
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500"><defs><mask id="neckCutout"><rect width="400" height="500" fill="white"/><ellipse cx="200" cy="45" rx="45" ry="25" fill="black"/></mask></defs><path d="M50 50 Q 50 30 70 30 L 130 30 Q 140 25 150 25 L 250 25 Q 260 25 270 30 L 330 30 Q 350 30 350 50 L 370 60 Q 380 70 380 90 L 380 120 Q 380 140 370 140 L 370 450 Q 370 480 340 480 L 60 480 Q 30 480 30 450 L 30 140 Q 20 140 20 120 L 20 90 Q 20 70 30 60 Z" fill="%2395a5a6" stroke="%238395a6" stroke-width="2" mask="url(%23neckCutout)"/></svg>');
+        }
+
+        .design-area {
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 160px;
+            height: 160px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .design-area.left {
+            top: 25%;
+            left: 18%;
+            transform: none;
+            width: 60px;
+            height: 60px;
+        }
+
+        .design-area.right {
+            top: 25%;
+            left: auto;
+            right: 18%;
+            transform: none;
+            width: 60px;
+            height: 60px;
+        }
+
+        .design-image {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+            display: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .design-image.visible {
+            display: block;
+            animation: fadeIn 0.5s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .preview-info {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            padding: 1.5rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 15px;
+        }
+
+        .info-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.5rem 0;
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .info-value {
+            font-weight: 700;
+            color: #667eea;
+        }
+
+                @media (max-width: 768px) {
+            .designer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .tshirt {
+                width: 280px;
+                height: 330px;
+            }
+
+            .design-area {
+                width: 150px;
+                height: 150px;
+            }
+
+            .design-area.left,
+            .design-area.right {
+                width: 60px;
+                height: 60px;
+            }
+
+            .action-buttons {
+                flex-direction: column;
+            }
+        }
